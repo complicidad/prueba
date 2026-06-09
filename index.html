@@ -710,7 +710,7 @@
         // =====================================================================
         // CONFIGURACIÓN DE GOOGLE APPS SCRIPT
         // =====================================================================
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwwpCb8m83uGI6ypoo24uCsLn6Dw86WiJOAv9KRSFu-sOVpK6SgG96tKLAs3Le9RzNp/exec"; 
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwkGVeJ3BzwdzzQbW2k0AKndHlWWfUVVk8se10ZSRIr0rlAZtJvlflA40bAFlurRLOl/exec"; 
         const APP_PIN = "123456"; 
 
         // --- MANEJO DE MODO OSCURO E ICONOS ---
@@ -1244,10 +1244,18 @@
 
         // --- ACCIONES DE ELIMINACIÓN Y ACTUALIZACIÓN ---
         window.deleteSaleItemAPI = async function(id) {
-            if(!confirm("⚠️ ¿Estás seguro de que deseas eliminar este item de venta? Esta acción no se puede deshacer.")) return;
-            showModal("Eliminando Registro...", "Por favor, espera.", false);
+            // 1. Encontrar la venta antes de borrarla para saber qué producto y cantidad es
+            const itemToDelete = dbCache.saleItems.find(item => item.id === id);
+            
+            if(!confirm("⚠️ ¿Estás seguro de que deseas eliminar este item de venta? El stock se recuperará automáticamente.")) return;
+            showModal("Eliminando Registro...", "Recuperando stock y actualizando...", false);
             try {
-                await fetchGAS('deleteSaleItem', { id });
+                // 2. Enviar la petición al backend incluyendo los datos necesarios para recuperar el inventario
+                await fetchGAS('deleteSaleItem', { 
+                    id: id,
+                    productId: itemToDelete ? itemToDelete.productId : null,
+                    qtyToRestore: itemToDelete ? itemToDelete.qty : 0
+                });
                 await syncData();
             } catch(e) { showModal("Error de Eliminación", e.message); }
         };
