@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Phosphor Icons (Reemplazo de Lucide para HTML) -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- Tailwind CSS -->
@@ -26,16 +26,11 @@
                         'bounce-slow': 'bounce 3s infinite',
                         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'marquee': 'marquee 20s linear infinite',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -66,30 +61,21 @@
             border-radius: 8px;
             border: 2px solid white;
         }
-        /* Para transiciones suaves del acordeón FAQ */
+        /* Transiciones suaves para el acordeón FAQ */
         .faq-answer {
             transition: max-height 0.3s ease-out, padding 0.3s ease;
             max-height: 0;
             overflow: hidden;
         }
-        /* Oculta scrollbar en carrusel móvil pero mantiene función */
-        .hide-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scroll {
-            -ms-overflow-style: none;  
-            scrollbar-width: none;  
-        }
     </style>
 </head>
 <body class="relative overflow-x-hidden selection:bg-[#604FDB] selection:text-white">
 
-    <!-- WAVY PATH CONTAINER (Z-INDEX ALTO PARA SUPERPONERSE, POINTER-EVENTS-NONE PARA NO MOLESTAR) -->
+    <!-- WAVY PATH CONTAINER -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-[100] overflow-hidden" id="wavy-path-container">
         <svg width="100%" height="100%" class="overflow-visible absolute top-0 left-0">
             <path id="wavy-path" fill="none" stroke="#1B162A" stroke-width="4" stroke-dasharray="8 12" opacity="0.4" stroke-linecap="round"></path>
             <g id="path-arrow" style="opacity: 0; transition: opacity 0.3s;">
-                <!-- Flecha de Radar Brillante -->
                 <path d="M -20 -15 L 0 25 L 20 -15 L 0 -5 Z" fill="#604FDB" stroke="#1B162A" stroke-width="4" stroke-linejoin="round" filter="drop-shadow(0px 0px 8px rgba(96, 79, 219, 0.8))"></path>
                 <circle cx="0" cy="5" r="4" fill="#D4FF33"></circle>
             </g>
@@ -106,15 +92,14 @@
             <button class="hidden sm:block font-bold text-[#1B162A] hover:text-[#604FDB] transition-colors px-4 py-2">
                 Inicia sesión
             </button>
-            <button class="bg-[#604FDB] text-white px-4 py-2 md:px-6 md:py-2 rounded-xl font-black border-4 border-[#1B162A] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#1B162A] transition-all text-sm md:text-base">
+            <button onclick="document.getElementById('crear-link').scrollIntoView({behavior: 'smooth'})" class="bg-[#604FDB] text-white px-4 py-2 md:px-6 md:py-2 rounded-xl font-black border-4 border-[#1B162A] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#1B162A] transition-all text-sm md:text-base">
                 Crear Link
             </button>
         </div>
     </header>
 
-    <!-- SECCIÓN 1: HERO FUSIONADO (TEXTO DEL LIVE SITE) -->
+    <!-- SECCIÓN 1: HERO -->
     <section class="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden px-6 border-b-8 border-[#1B162A]">
-        <!-- Abstract Background Shapes -->
         <div class="absolute top-20 right-10 w-96 h-96 bg-[#D4FF33] rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow"></div>
         <div class="absolute top-40 -left-10 w-80 h-80 bg-[#83CEFF] rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
         
@@ -141,26 +126,22 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4">
-                    <button class="bg-[#1B162A] text-[#D4FF33] px-6 py-4 md:px-8 md:py-5 rounded-2xl font-black text-lg md:text-xl border-4 border-[#1B162A] shadow-[6px_6px_0px_0px_#D4FF33] md:shadow-[8px_8px_0px_0px_#D4FF33] hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_#D4FF33] transition-all flex items-center justify-center gap-3 group">
-                        DESCUBRE CÓMO FUNCIONA
-                        <i class="ph-bold ph-arrow-right text-xl md:text-2xl group-hover:translate-x-2 transition-transform"></i>
+                    <button onclick="document.getElementById('crear-link').scrollIntoView({behavior: 'smooth'})" class="bg-[#1B162A] text-[#D4FF33] px-6 py-4 md:px-8 md:py-5 rounded-2xl font-black text-lg md:text-xl border-4 border-[#1B162A] shadow-[6px_6px_0px_0px_#D4FF33] md:shadow-[8px_8px_0px_0px_#D4FF33] hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_#D4FF33] transition-all flex items-center justify-center gap-3 group">
+                        CREA TU LINK AHORA
+                        <i class="ph-bold ph-arrow-down text-xl md:text-2xl group-hover:translate-y-1 transition-transform"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Hero Visuals: El Mockup de WhatsApp Brutalista -->
             <div class="relative z-10 flex justify-center items-center h-full mt-16 lg:mt-0 perspective-1000">
                 <div class="relative w-full max-w-[320px] md:max-w-md transform rotate-[-2deg] md:rotate-[-3deg] hover:rotate-0 transition-transform duration-500">
                     
-                    <!-- Etiqueta Flotante -->
                     <div class="absolute -top-6 -right-4 md:-top-8 md:-right-8 bg-[#36E5BD] border-4 border-[#1B162A] rounded-2xl p-3 md:p-4 z-20 shadow-[6px_6px_0px_0px_#1B162A] rotate-12 animate-bounce-slow">
                          <span class="font-black text-lg md:text-xl uppercase">¡Rótulo Listo! 📦</span>
                     </div>
 
-                    <!-- Chat Mockup Bento Style -->
                     <div class="bg-white border-8 border-[#1B162A] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-[12px_12px_0px_0px_#1B162A] md:shadow-[16px_16px_0px_0px_#1B162A] relative z-10 flex flex-col h-[450px] md:h-[500px]">
                         
-                        <!-- Header WhatsApp Fake -->
                         <div class="bg-[#1B162A] text-white p-4 flex items-center gap-4 border-b-4 border-[#1B162A]">
                             <i class="ph-bold ph-arrow-left text-2xl"></i>
                             <div class="w-12 h-12 bg-[#D4FF33] border-2 border-white rounded-full flex items-center justify-center text-[#1B162A] font-black text-xl">
@@ -172,11 +153,9 @@
                             </div>
                         </div>
 
-                        <!-- Body Chat -->
                         <div class="bg-[#FAFAFC] flex-1 p-6 flex flex-col justify-end gap-4 relative">
                              <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                              
-                             <!-- Mensaje Entrante -->
                              <div class="bg-white border-4 border-[#1B162A] rounded-2xl rounded-tl-none p-5 shadow-[4px_4px_0px_0px_#1B162A] w-[90%] relative z-10 animate-fade-in-up">
                                  <p class="font-black text-[#604FDB] text-sm mb-3 uppercase tracking-widest border-b-2 border-slate-100 pb-2">REMITENTE: Regalos Store</p>
                                  <ul class="space-y-2 font-bold text-slate-700 text-sm">
@@ -191,7 +170,6 @@
                                  </div>
                              </div>
 
-                             <!-- Input Mock -->
                              <div class="h-14 bg-white border-4 border-[#1B162A] rounded-full flex items-center px-4 gap-3 relative z-10 shadow-[4px_4px_0px_0px_#1B162A] mt-2">
                                  <div class="w-8 h-8 bg-[#83CEFF] rounded-full border-2 border-[#1B162A]"></div>
                                  <div class="h-4 bg-slate-200 rounded flex-1"></div>
@@ -199,26 +177,20 @@
                         </div>
                     </div>
 
-                    <!-- Mascot integration (Flowy) -->
+                    <!-- Flowy Mascot -->
                     <div class="absolute -bottom-8 -left-6 md:-bottom-10 md:-left-16 z-20 flex flex-col items-center">
                         <svg viewBox="0 0 200 200" class="w-32 h-32 md:w-48 md:h-48 drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
                             <g transform="translate(10, 20)">
-                                <!-- Brazo izquierdo -->
                                 <path d="M 0 60 Q -30 20 -10 -20" fill="none" stroke="#1B162A" stroke-width="8" stroke-linecap="round" />
                                 <g transform="translate(-15, -30) rotate(-15)">
                                     <path d="M 0 20 L 40 0 L 10 40 Z" fill="white" stroke="#1B162A" stroke-width="6" stroke-linejoin="round" />
                                     <path d="M 15 25 L 40 0" fill="none" stroke="#1B162A" stroke-width="4" />
                                 </g>
-                                <!-- Cuerpo -->
                                 <rect x="20" y="20" width="120" height="120" rx="30" fill="#36E5BD" stroke="#1B162A" stroke-width="10" />
-                                <!-- Piernas -->
                                 <path d="M 50 140 L 40 180 M 110 140 L 120 180" fill="none" stroke="#1B162A" stroke-width="10" stroke-linecap="round" />
-                                <!-- Zapatos -->
                                 <ellipse cx="30" cy="180" rx="15" ry="8" fill="#1B162A" />
                                 <ellipse cx="130" cy="180" rx="15" ry="8" fill="#1B162A" />
-                                <!-- Brazo derecho -->
                                 <path d="M 140 80 Q 170 90 180 130" fill="none" stroke="#1B162A" stroke-width="8" stroke-linecap="round" />
-                                <!-- Cara -->
                                 <circle cx="60" cy="60" r="6" fill="#1B162A" />
                                 <path d="M 100 55 Q 105 50 110 55" fill="none" stroke="#1B162A" stroke-width="4" stroke-linecap="round" />
                                 <path d="M 60 85 Q 80 100 100 85" fill="none" stroke="#1B162A" stroke-width="6" stroke-linecap="round" />
@@ -235,46 +207,51 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONFIGURADOR (CREA TU LINK) -->
+    <!-- SECCIÓN 2: CONFIGURADOR (EL MOMENTO AHA) -->
     <section id="crear-link" class="py-16 md:py-32 bg-[#FAFAFC] px-6 border-b-8 border-[#1B162A] relative overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-12 md:mb-16">
                  <div class="inline-block bg-[#D4FF33] text-[#1B162A] px-5 py-2 md:px-6 md:py-2 rounded-full font-black uppercase tracking-widest text-xs md:text-sm mb-4 md:mb-6 border-2 border-[#1B162A] shadow-[4px_4px_0px_0px_#1B162A] rotate-[2deg]">
-                     SIMULADOR INTERACTIVO
+                     PRUÉBALO AHORA MISMO
                  </div>
-                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#1B162A] uppercase mb-4 md:mb-6">Personaliza tu Link</h2>
-                 <p class="text-xl md:text-2xl font-bold text-slate-500">Configura tus preferencias. La información de tus clientes irá directo a tu WhatsApp.</p>
+                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#1B162A] uppercase mb-4 md:mb-6">Crea tu Link Gratis</h2>
+                 <p class="text-xl md:text-2xl font-bold text-slate-500">Configura tus reglas logísticas. Simula la experiencia de tu cliente al instante.</p>
             </div>
 
             <div class="bg-white border-8 border-[#1B162A] rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-[12px_12px_0px_0px_#1B162A] relative hover:-translate-y-2 transition-transform duration-500">
                 
-                <!-- Input WhatsApp -->
                 <div class="mb-8 md:mb-10">
-                    <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">1. Tu número de WhatsApp</label>
-                    <p class="text-sm font-bold text-slate-500 mb-3">Aquí llegarán directamente los datos de tus clientes.</p>
+                    <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">1. Nombre de tu Negocio</label>
+                    <p class="text-sm font-bold text-slate-500 mb-3">Así se verá tu link personalizado y tu formulario.</p>
                     <div class="flex border-4 border-[#1B162A] rounded-xl overflow-hidden shadow-[4px_4px_0px_0px_#1B162A] focus-within:shadow-[6px_6px_0px_0px_#604FDB] focus-within:-translate-y-1 transition-all">
-                        <span class="bg-slate-100 px-4 py-3 md:py-4 font-bold text-lg md:text-xl border-r-4 border-[#1B162A] flex items-center">+51</span>
-                        <input type="tel" id="ws-number" placeholder="987 654 321" class="w-full px-4 py-3 md:py-4 font-bold text-lg md:text-xl outline-none" />
+                        <span class="bg-slate-100 px-4 py-3 md:py-4 font-black text-lg md:text-xl border-r-4 border-[#1B162A] flex items-center text-[#604FDB]"><i class="ph-bold ph-storefront"></i></span>
+                        <input type="text" id="business-name" placeholder="Ej. Regalos Store" class="w-full px-4 py-3 md:py-4 font-bold text-lg md:text-xl outline-none text-[#1B162A] placeholder:text-slate-300" />
                     </div>
                 </div>
 
-                <!-- Couriers -->
                 <div class="mb-8 md:mb-10">
-                    <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">2. ¿Con qué agencias trabajas?</label>
+                    <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">2. Tu número de WhatsApp</label>
+                    <p class="text-sm font-bold text-slate-500 mb-3">Aquí recibirás los datos de tus clientes ya estructurados.</p>
+                    <div class="flex border-4 border-[#1B162A] rounded-xl overflow-hidden shadow-[4px_4px_0px_0px_#1B162A] focus-within:shadow-[6px_6px_0px_0px_#604FDB] focus-within:-translate-y-1 transition-all">
+                        <span class="bg-slate-100 px-4 py-3 md:py-4 font-bold text-lg md:text-xl border-r-4 border-[#1B162A] flex items-center">+51</span>
+                        <input type="tel" id="ws-number" placeholder="987 654 321" class="w-full px-4 py-3 md:py-4 font-bold text-lg md:text-xl outline-none text-[#1B162A] placeholder:text-slate-300" />
+                    </div>
+                </div>
+
+                <div class="mb-8 md:mb-10">
+                    <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">3. ¿Con qué agencias trabajas?</label>
                     <div class="flex flex-wrap gap-3" id="courier-options">
                         <button class="config-btn active bg-[#604FDB] text-white border-4 border-[#1B162A] px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 transition-transform">Shalom</button>
                         <button class="config-btn active bg-[#604FDB] text-white border-4 border-[#1B162A] px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 transition-transform">Olva</button>
                         <button class="config-btn bg-white text-slate-500 border-4 border-slate-200 px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 hover:border-[#1B162A] transition-all">Marvisur</button>
-                        <button class="config-btn bg-white text-slate-500 border-4 border-slate-200 px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 hover:border-[#1B162A] transition-all">Dinsides</button>
-                        <button class="config-btn bg-white text-slate-500 border-4 border-slate-200 px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 hover:border-[#1B162A] transition-all">Delivery</button>
-                        <button class="config-btn active bg-[#604FDB] text-white border-4 border-[#1B162A] px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 transition-transform">Retiro en tienda</button>
+                        <button class="config-btn bg-white text-slate-500 border-4 border-slate-200 px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 hover:border-[#1B162A] transition-all">Delivery Local</button>
+                        <button class="config-btn bg-white text-slate-500 border-4 border-slate-200 px-4 py-2 md:px-5 md:py-3 rounded-xl font-bold hover:-translate-y-1 hover:border-[#1B162A] transition-all">Recojo en tienda</button>
                     </div>
                 </div>
 
-                <!-- Days and Times -->
                 <div class="grid md:grid-cols-2 gap-8 mb-8 md:mb-10">
                     <div>
-                        <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">3. Días de envío</label>
+                        <label class="block font-black text-xl md:text-2xl uppercase mb-3 text-[#1B162A]">4. Días de envío</label>
                         <div class="flex flex-wrap gap-2" id="day-options">
                             <button class="config-btn active bg-[#36E5BD] text-[#1B162A] border-4 border-[#1B162A] w-12 h-12 md:w-14 md:h-14 rounded-xl font-black text-sm hover:-translate-y-1 transition-transform">Lun</button>
                             <button class="config-btn active bg-[#36E5BD] text-[#1B162A] border-4 border-[#1B162A] w-12 h-12 md:w-14 md:h-14 rounded-xl font-black text-sm hover:-translate-y-1 transition-transform">Mar</button>
@@ -296,80 +273,133 @@
                     </div>
                 </div>
 
-                <!-- Anticipation -->
                 <div class="mb-10 md:mb-12">
-                    <label class="block font-black text-xl md:text-2xl uppercase mb-2 text-[#1B162A]">4. Tiempo de preparación</label>
-                    <p class="text-sm md:text-base font-bold text-slate-500 mb-4">¿Cuántos días necesitas de anticipación para preparar el envío? (0 = despachas hoy mismo)</p>
+                    <label class="block font-black text-xl md:text-2xl uppercase mb-2 text-[#1B162A]">5. Días de Preparación</label>
+                    <p class="text-sm md:text-base font-bold text-slate-500 mb-4">Días de anticipación para armar el paquete (0 = despachas hoy mismo)</p>
                     <div class="flex items-center gap-4">
                         <button id="btn-minus" class="w-14 h-14 bg-white border-4 border-[#1B162A] rounded-xl font-black text-2xl shadow-[4px_4px_0px_0px_#1B162A] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#1B162A] transition-all flex items-center justify-center">-</button>
-                        <input type="number" id="anticipacion-input" value="0" min="0" class="w-24 text-center px-4 py-3 font-black text-3xl border-4 border-[#1B162A] rounded-xl outline-none shadow-[4px_4px_0px_0px_#1B162A]" readonly />
+                        <input type="number" id="anticipacion-input" value="1" min="0" class="w-24 text-center px-4 py-3 font-black text-3xl border-4 border-[#1B162A] rounded-xl outline-none shadow-[4px_4px_0px_0px_#1B162A]" readonly />
                         <button id="btn-plus" class="w-14 h-14 bg-[#83CEFF] text-[#1B162A] border-4 border-[#1B162A] rounded-xl font-black text-2xl shadow-[4px_4px_0px_0px_#1B162A] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#1B162A] transition-all flex items-center justify-center">+</button>
                     </div>
                 </div>
 
-                <!-- Button -->
                 <button id="btn-generar" class="w-full bg-[#1B162A] text-[#D4FF33] py-5 md:py-6 rounded-2xl font-black text-xl md:text-2xl border-4 border-[#1B162A] shadow-[6px_6px_0px_0px_#D4FF33] md:shadow-[8px_8px_0px_0px_#D4FF33] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#D4FF33] transition-all uppercase flex items-center justify-center gap-3">
-                    <i class="ph-bold ph-link text-3xl"></i> Generar mi Link
+                    <i class="ph-bold ph-link text-3xl"></i> Generar mi Link Gratis
                 </button>
 
-                <!-- Result Box (Hidden by default) -->
                 <div id="link-result" class="hidden mt-8 bg-[#D4FF33] border-4 border-[#1B162A] rounded-2xl p-6 md:p-8 shadow-[6px_6px_0px_0px_#1B162A] animate-fade-in-up">
                     <h4 class="font-black text-xl md:text-2xl uppercase mb-2">¡Tu link está listo! 🎉</h4>
-                    <p class="text-base md:text-lg font-bold text-[#1B162A]/80 mb-6">Cópialo y pégalo en la descripción de tu Instagram o compártelo directo con tus clientes.</p>
+                    <p class="text-base md:text-lg font-bold text-[#1B162A]/80 mb-6">Haz clic en el enlace para abrir tu formulario y simular cómo un cliente enviaría sus datos a tu WhatsApp.</p>
                     
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <div class="flex-1 bg-white border-4 border-[#1B162A] rounded-xl px-4 py-3 md:py-4 font-bold text-sm md:text-base truncate flex items-center" id="generated-url">
+                        <a href="#" title="Simular vista del cliente" class="flex-1 bg-white border-4 border-[#1B162A] rounded-xl px-4 py-3 md:py-4 font-bold text-sm md:text-base truncate flex justify-between items-center hover:text-[#604FDB] hover:border-[#604FDB] transition-colors cursor-pointer group shadow-[4px_4px_0px_0px_#1B162A]" id="generated-url">
                             latam5s.com/link/tu-negocio
-                        </div>
-                        <button id="btn-copy" class="bg-[#1B162A] text-white px-6 py-3 md:py-4 rounded-xl font-black border-4 border-[#1B162A] hover:bg-[#604FDB] transition-colors flex items-center justify-center gap-2">
+                            <i class="ph-bold ph-arrow-up-right text-xl opacity-50 group-hover:opacity-100"></i>
+                        </a>
+                        <button id="btn-copy" class="bg-[#1B162A] text-white px-6 py-3 md:py-4 rounded-xl font-black border-4 border-[#1B162A] hover:bg-[#604FDB] transition-colors flex items-center justify-center gap-2 shrink-0">
                             <i class="ph-bold ph-copy text-xl"></i> Copiar
                         </button>
                     </div>
-
-                    <p class="text-xs md:text-sm font-bold text-[#1B162A]/60 mt-6 border-t-4 border-[#1B162A]/10 pt-4 flex gap-3">
-                        <i class="ph-bold ph-shield-check text-2xl shrink-0"></i> 
-                        La configuración de tus agencias y horarios ha quedado guardada en este link. Cuando tus clientes ingresen sus datos, la información no se almacena en ninguna base de datos, viajará directamente como un mensaje al WhatsApp que configuraste arriba. Privacidad total.
-                    </p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3: DASHBOARD -->
+    <!-- MODAL DEL FORMULARIO CLIENTE -->
+    <div id="customer-modal" class="fixed inset-0 bg-[#1B162A]/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-[#FAFAFC] w-full max-w-md border-8 border-[#1B162A] rounded-[2rem] shadow-[12px_12px_0px_0px_#D4FF33] relative transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]" id="customer-modal-content">
+            
+            <div class="bg-[#604FDB] text-white p-5 md:p-6 border-b-4 border-[#1B162A] rounded-t-[1.5rem] flex justify-between items-center shrink-0">
+                <div>
+                    <h3 id="modal-business-name" class="font-black text-xl md:text-2xl uppercase">Tu Negocio</h3>
+                    <p class="text-xs md:text-sm font-bold text-white/80">Formulario de Envío Seguro</p>
+                </div>
+                <button id="close-modal" class="w-10 h-10 bg-white text-[#1B162A] border-4 border-[#1B162A] rounded-full flex items-center justify-center font-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#1B162A] transition-all">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-5 md:p-6 overflow-y-auto custom-scrollbar flex-1">
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border-2 border-blue-200 text-blue-800 p-3 rounded-xl text-sm font-bold flex gap-3 items-start mb-4">
+                        <i class="ph-bold ph-info text-xl shrink-0"></i>
+                        <p>Simulación: Al hacer clic en Enviar, se abrirá WhatsApp con el mensaje tal como lo recibirías.</p>
+                    </div>
+
+                    <div>
+                        <label class="block font-black text-sm uppercase mb-1">Nombre Completo</label>
+                        <input type="text" id="client-name" placeholder="Ej. María Pérez" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none focus:border-[#604FDB]" />
+                    </div>
+                    <div>
+                        <label class="block font-black text-sm uppercase mb-1">DNI / CE</label>
+                        <input type="number" id="client-dni" placeholder="12345678" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none focus:border-[#604FDB]" />
+                    </div>
+                    <div>
+                        <label class="block font-black text-sm uppercase mb-1">Celular de Contacto</label>
+                        <input type="tel" id="client-phone" placeholder="987 654 321" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none focus:border-[#604FDB]" />
+                    </div>
+                    
+                    <div class="p-4 bg-[#D4FF33]/30 border-4 border-[#1B162A] rounded-xl my-4">
+                        <label class="block font-black text-sm uppercase mb-2">Agencia de Envío</label>
+                        <select id="client-courier" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none appearance-none bg-white cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231B162A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.8rem auto;"></select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block font-black text-sm uppercase mb-1">Fecha de Despacho <span class="text-xs font-normal text-slate-500">(Calculada por el sistema)</span></label>
+                        <select id="client-date" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none appearance-none bg-white cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231B162A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.8rem auto;"></select>
+                    </div>
+
+                    <div>
+                        <label class="block font-black text-sm uppercase mb-1">Destino (Sucursal o Dirección)</label>
+                        <input type="text" id="client-dest" placeholder="Ej. Arequipa / Cercado / Av. Ejército" class="w-full px-4 py-3 font-bold border-4 border-[#1B162A] rounded-xl outline-none focus:border-[#604FDB]" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-5 md:p-6 border-t-4 border-[#1B162A] shrink-0 bg-white rounded-b-[1.5rem]">
+                <button id="submit-client-form" class="w-full bg-[#36E5BD] text-[#1B162A] py-4 rounded-xl font-black text-lg border-4 border-[#1B162A] shadow-[4px_4px_0px_0px_#1B162A] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#1B162A] transition-all uppercase flex justify-center items-center gap-2">
+                    Enviar a WhatsApp <i class="ph-bold ph-paper-plane-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: DASHBOARD (PLAN PRO) -->
     <section class="py-16 md:py-32 bg-[#1B162A] px-6 text-white relative overflow-hidden border-b-8 border-[#D4FF33]">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
         
         <div class="max-w-7xl mx-auto relative z-10 grid xl:grid-cols-2 gap-12 md:gap-16 items-center">
             
             <div class="space-y-6 md:space-y-8">
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-[#D4FF33] text-[#1B162A] border-4 border-[#1B162A] font-black text-xs md:text-sm shadow-[4px_4px_0px_0px_#1B162A] rounded-full rotate-[-2deg] uppercase">
+                    Poder Ilimitado con PRO
+                </div>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight">
                     Información lista para carga masiva <br class="hidden md:block"/>
                     <span class="text-[#36E5BD]">en un clic.</span>
                 </h2>
                 <p class="text-xl md:text-2xl text-slate-300 font-bold leading-relaxed border-l-4 border-[#604FDB] pl-4 md:pl-6">
-                    Olvídate de los cuadernos y las notas perdidas. Todos tus envíos en un solo lugar. Filtra, busca y despacha sin esfuerzo.
+                    Olvídate de copiar y pegar. Tu panel PRO consolida todos los pedidos. Descarga el Excel oficial para agencias o imprime rótulos al instante.
                 </p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6">
                     <div class="bg-[#2A233D] p-5 md:p-6 rounded-2xl border-4 border-[#604FDB] shadow-[6px_6px_0px_0px_#604FDB]">
                         <i class="ph-bold ph-printer text-3xl md:text-4xl text-[#D4FF33] mb-3 md:mb-4"></i>
-                        <div class="font-black text-lg md:text-xl uppercase">Rótulos Profesionales</div>
+                        <div class="font-black text-lg md:text-xl uppercase">Rótulos Listos</div>
                     </div>
                     <div class="bg-[#2A233D] p-5 md:p-6 rounded-2xl border-4 border-[#83CEFF] shadow-[6px_6px_0px_0px_#83CEFF]">
                         <i class="ph-bold ph-file-xls text-3xl md:text-4xl text-[#83CEFF] mb-3 md:mb-4"></i>
-                        <div class="font-black text-lg md:text-xl uppercase">Excel para Agencias</div>
+                        <div class="font-black text-lg md:text-xl uppercase">Excel Agencias</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Dashboard Mockup UI -->
             <div class="relative pt-12 xl:pt-0">
                 <div class="absolute inset-0 bg-[#604FDB] rounded-[2rem] md:rounded-[3rem] rotate-2 scale-100 md:rotate-3 md:scale-105 border-4 border-white opacity-50"></div>
                 
                 <div class="bg-[#FAFAFC] text-[#1B162A] rounded-[1.5rem] md:rounded-[2rem] border-4 md:border-8 border-white p-2 shadow-2xl relative z-10 flex flex-col md:flex-row gap-4 h-[650px] md:h-[550px] overflow-hidden">
                      
-                     <!-- Sidebar -->
                      <div class="w-full md:w-1/3 bg-white border-4 border-[#1B162A] rounded-xl p-6 shadow-[4px_4px_0px_0px_#1B162A] flex flex-col">
                          <h4 class="font-black text-2xl mb-6 flex items-center gap-3 border-b-4 border-slate-100 pb-4">
                              <i class="ph-bold ph-package text-[#604FDB]"></i> Mis envíos
@@ -396,10 +426,8 @@
                          </div>
                      </div>
 
-                     <!-- Main Cards Area -->
                      <div class="w-full md:w-2/3 flex flex-col gap-4 overflow-y-auto pr-2 pb-4 pt-2 custom-scrollbar">
                          
-                         <!-- Tarjeta 1 -->
                          <div class="bg-white border-4 border-[#1B162A] p-5 rounded-2xl shadow-[6px_6px_0px_0px_#1B162A] flex flex-col gap-3 relative transform hover:translate-x-2 transition-transform">
                              <div class="flex justify-between items-start">
                                  <div>
@@ -419,7 +447,6 @@
                              </div>
                          </div>
 
-                         <!-- Tarjeta 2 -->
                          <div class="bg-white border-4 border-[#1B162A] p-5 rounded-2xl shadow-[6px_6px_0px_0px_#1B162A] flex flex-col gap-3 relative transform hover:translate-x-2 transition-transform ml-2 md:ml-4">
                              <div class="flex justify-between items-start">
                                  <div>
@@ -439,7 +466,6 @@
                              </div>
                          </div>
 
-                         <!-- Tarjeta 3 -->
                          <div class="bg-white border-4 border-[#1B162A] p-5 rounded-2xl shadow-[6px_6px_0px_0px_#1B162A] flex flex-col gap-3 relative transform hover:translate-x-2 transition-transform ml-4 md:ml-8">
                              <div class="flex justify-between items-start">
                                  <div>
@@ -466,7 +492,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: PRECIOS (ACTUALIZADO A PRECIOS DEL LIVE SITE) -->
+    <!-- SECCIÓN 4: PRECIOS -->
     <section id="planes" class="py-16 md:py-32 px-6 bg-white border-b-8 border-[#1B162A]">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 md:mb-24 relative z-10">
@@ -479,7 +505,6 @@
 
             <div class="grid md:grid-cols-2 gap-8 lg:gap-12 relative z-10 max-w-5xl mx-auto">
                 
-                <!-- PLAN BÁSICO -->
                 <div class="bg-[#83CEFF] border-8 border-[#1B162A] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-10 flex flex-col shadow-[12px_12px_0px_0px_#1B162A] md:shadow-[16px_16px_0px_0px_#1B162A] hover:-translate-y-2 transition-transform">
                     <h3 class="text-3xl md:text-4xl font-black text-[#1B162A] uppercase mb-2">Plan Básico</h3>
                     <p class="text-lg md:text-xl text-[#1B162A]/80 font-bold mb-6 md:mb-8 h-auto md:h-14">Crea tu link a tu manera. Envíos ordenados en tu WhatsApp.</p>
@@ -509,7 +534,6 @@
                     </button>
                 </div>
 
-                <!-- PLAN PRO (Actualizado S/ 49.90) -->
                 <div class="bg-[#D4FF33] border-8 border-[#1B162A] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-10 flex flex-col shadow-[12px_12px_0px_0px_#1B162A] md:shadow-[16px_16px_0px_0px_#1B162A] hover:-translate-y-2 transition-transform md:-mt-8 relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-[#604FDB] text-white font-black px-4 py-2 md:px-6 md:py-3 rounded-bl-2xl md:rounded-bl-3xl border-b-4 border-l-4 border-[#1B162A] text-xs md:text-lg uppercase tracking-wider">
                         PARA EXPERTOS
@@ -566,7 +590,6 @@
 
             <div class="space-y-4 md:space-y-6 relative z-10" id="faq-container">
                  
-                 <!-- FAQ ITEM 1 -->
                  <div class="faq-item border-4 border-[#1B162A] rounded-2xl overflow-hidden transition-all duration-300 bg-[#D4FF33]">
                      <button class="faq-btn w-full px-5 md:px-6 py-4 md:py-5 flex justify-between items-center text-left font-black text-base md:text-lg focus:outline-none">
                          <span>¿Tengo que instalar algún programa complejo?</span>
@@ -576,12 +599,11 @@
                      </button>
                      <div class="faq-answer px-5 md:px-6 font-medium text-[#1B162A]/80" style="max-height: 500px; padding-bottom: 24px;">
                          <div class="pt-3 md:pt-4 border-t-2 border-[#1B162A]/20 text-sm md:text-base">
-                             Cero programas. Puedes revisar tus pedidos, descargar tus listas y configurar tus agencias desde cualquier celular, tablet o laptop con internet. Como siempre decimos: si sabes usar WhatsApp ya sabes usar nuestra plataforma.
+                             Cero programas. Puedes revisar tus pedidos, descargar tus listas y configurar tus agencias desde cualquier celular, tablet o laptop con internet.
                          </div>
                      </div>
                  </div>
 
-                 <!-- FAQ ITEM 2 -->
                  <div class="faq-item border-4 border-[#1B162A] rounded-2xl overflow-hidden transition-all duration-300 bg-white hover:-translate-y-1 shadow-[4px_4px_0px_0px_#1B162A]">
                      <button class="faq-btn w-full px-5 md:px-6 py-4 md:py-5 flex justify-between items-center text-left font-black text-base md:text-lg focus:outline-none">
                          <span>¿Con qué agencias de envío puedo trabajar?</span>
@@ -591,22 +613,7 @@
                      </button>
                      <div class="faq-answer px-5 md:px-6 font-medium text-[#1B162A]/80">
                          <div class="pt-3 md:pt-4 border-t-2 border-[#1B162A]/20 text-sm md:text-base">
-                             Trabajamos con las principales del país (Shalom, Olva, Marvisur, etc.) y puedes agregar tus propias opciones de Delivery local o Recojo en tienda en tu formulario personalizado.
-                         </div>
-                     </div>
-                 </div>
-
-                 <!-- FAQ ITEM 3 -->
-                 <div class="faq-item border-4 border-[#1B162A] rounded-2xl overflow-hidden transition-all duration-300 bg-white hover:-translate-y-1 shadow-[4px_4px_0px_0px_#1B162A]">
-                     <button class="faq-btn w-full px-5 md:px-6 py-4 md:py-5 flex justify-between items-center text-left font-black text-base md:text-lg focus:outline-none">
-                         <span>¿Qué pasa si mi cliente se equivoca al llenar el formulario?</span>
-                         <div class="icon-wrapper w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#1B162A] flex items-center justify-center bg-white shrink-0 transition-transform ml-4">
-                             <i class="faq-icon ph-bold ph-plus text-lg md:text-xl"></i>
-                         </div>
-                     </button>
-                     <div class="faq-answer px-5 md:px-6 font-medium text-[#1B162A]/80">
-                         <div class="pt-3 md:pt-4 border-t-2 border-[#1B162A]/20 text-sm md:text-base">
-                             El formulario está diseñado con campos restrictivos para minimizar errores (solo números en DNI, departamentos y provincias en listas desplegables). Además, puedes editar cualquier dato desde tu panel antes de enviarlo.
+                             Trabajamos con las principales del país (Shalom, Olva, Marvisur, etc.) y puedes agregar tus propias opciones como Delivery o Recojo en tienda.
                          </div>
                      </div>
                  </div>
@@ -624,7 +631,7 @@
                      <div class="text-4xl md:text-5xl font-black tracking-tighter">LATAM</div>
                  </div>
                  <p class="text-lg md:text-xl font-bold text-slate-400 max-w-md mb-6 md:mb-8 leading-relaxed">
-                     Libérate del Trabajo Manual. <br/> El estándar de envíos para emprendedores que no tienen tiempo que perder.
+                     Libérate del Trabajo Manual. <br/> El estándar de envíos para emprendedores.
                  </p>
              </div>
              
@@ -645,9 +652,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            /* --- LOGIC: FAQ ACCORDION --- */
+            /* --- GLOBAL VARIABLES PARA SIMULACIÓN --- */
+            let savedWsNumber = '';
+            let savedBusinessName = '';
+            let savedCouriers = [];
+            let savedDays = [];
+            let savedAnticipation = 0;
+
+            /* --- FAQ ACCORDION --- */
             const faqBtns = document.querySelectorAll('.faq-btn');
-            
             faqBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const parent = btn.closest('.faq-item');
@@ -657,7 +670,6 @@
                     const isOpen = parent.classList.contains('bg-[#D4FF33]');
 
                     if (isOpen) {
-                        // Close
                         parent.classList.remove('bg-[#D4FF33]');
                         parent.classList.add('bg-white', 'hover:-translate-y-1', 'shadow-[4px_4px_0px_0px_#1B162A]');
                         answer.style.maxHeight = '0px';
@@ -666,10 +678,8 @@
                         icon.classList.remove('ph-minus');
                         icon.classList.add('ph-plus');
                     } else {
-                        // Open
                         parent.classList.add('bg-[#D4FF33]');
                         parent.classList.remove('bg-white', 'hover:-translate-y-1', 'shadow-[4px_4px_0px_0px_#1B162A]');
-                        // Calculate exact height needed
                         answer.style.maxHeight = answer.scrollHeight + 24 + 'px'; 
                         answer.style.paddingBottom = '24px';
                         iconWrapper.classList.add('rotate-180');
@@ -679,138 +689,59 @@
                 });
             });
 
-            /* --- LOGIC: GLOBAL WAVY PATH (MOTION DESIGN) --- */
+            /* --- WAVY PATH ANIMATION --- */
             const pathElement = document.getElementById('wavy-path');
             const arrowGroup = document.getElementById('path-arrow');
             let pathLength = 0;
 
             const updatePath = () => {
-                const s1 = document.getElementById('step-1');
-                const s2 = document.getElementById('step-2');
-                const s3 = document.getElementById('step-3');
-
-                const getCenter = (el) => {
-                    if (!el) return {x: 0, y: 0};
-                    const rect = el.getBoundingClientRect();
-                    return {
-                        x: rect.left + rect.width / 2 + window.scrollX,
-                        y: rect.top + rect.height / 2 + window.scrollY
-                    };
-                };
-
                 const wWidth = window.innerWidth;
                 const dHeight = document.documentElement.scrollHeight;
-                const isMobile = wWidth <= 768; // Si es menor a 768px, asumimos móvil
-                
-                // Si es móvil, la ruta se mantiene por el margen derecho
-                const rightX = isMobile ? wWidth - 25 : wWidth - 80;
-
-                const p1 = getCenter(s1);
-                const p2 = getCenter(s2);
-                const p3 = getCenter(s3);
+                const rightX = wWidth <= 768 ? wWidth - 25 : wWidth - 80;
                 
                 const segmentHeight = 150;
                 let d = `M ${rightX} 0 `;
-                
-                // Si existe el primer paso, trazamos hasta un poco antes
-                const yBeforeSteps = s1 ? p1.y - 150 : dHeight;
                 let currentY = 0;
                 
-                // Ondas iniciales (Bajan por la derecha)
-                while (currentY < yBeforeSteps && currentY < dHeight) {
+                while (currentY < dHeight) {
                     const isRight = (Math.round(currentY / segmentHeight)) % 2 === 0;
-                    const amplitude = isMobile ? 15 : 20;
+                    const amplitude = wWidth <= 768 ? 15 : 20;
                     const controlX = isRight ? rightX + amplitude : rightX - amplitude;
-                    const nextY = Math.min(currentY + segmentHeight, yBeforeSteps);
-                    if (nextY <= dHeight) { 
-                        d += `Q ${controlX} ${(currentY + nextY)/2}, ${rightX} ${nextY} `; 
-                    }
+                    const nextY = Math.min(currentY + segmentHeight, dHeight);
+                    d += `Q ${controlX} ${(currentY + nextY)/2}, ${rightX} ${nextY} `;
                     currentY = nextY;
-                }
-
-                // LÓGICA PRINCIPAL: Móvil vs Desktop
-                if (isMobile) {
-                    // EN MÓVIL: Las tarjetas están en un scroll lateral (carrusel).
-                    // La flecha no debe meterse a cruzarlas, solo baja serpenteando.
-                    while (currentY < dHeight) {
-                        const isRight = (Math.round(currentY / segmentHeight)) % 2 === 0;
-                        const amplitude = 15;
-                        const controlX = isRight ? rightX + amplitude : rightX - amplitude;
-                        const nextY = Math.min(currentY + segmentHeight, dHeight);
-                        d += `Q ${controlX} ${(currentY + nextY)/2}, ${rightX} ${nextY} `;
-                        currentY = nextY;
-                    }
-                } else {
-                    // EN DESKTOP: La flecha abandona la pared derecha para cruzar las 3 tarjetas en escalera.
-                    if (s1 && s2 && s3) {
-                        d += `C ${rightX} ${p1.y - 80}, ${p1.x} ${p1.y - 80}, ${p1.x} ${p1.y} `;
-                        
-                        const deltaY12 = Math.max(50, (p2.y - p1.y) / 2);
-                        d += `C ${p1.x} ${p1.y + deltaY12}, ${p2.x} ${p2.y - deltaY12}, ${p2.x} ${p2.y} `;
-                        
-                        const deltaY23 = Math.max(50, (p3.y - p2.y) / 2);
-                        d += `C ${p2.x} ${p2.y + deltaY23}, ${p3.x} ${p3.y - deltaY23}, ${p3.x} ${p3.y} `;
-                        
-                        const yAfterSteps = p3.y + 150;
-                        d += `C ${p3.x} ${p3.y + 80}, ${rightX} ${yAfterSteps - 80}, ${rightX} ${yAfterSteps} `;
-                        currentY = yAfterSteps;
-                    }
-
-                    // Ondas finales post-pasos hasta el footer
-                    while (currentY < dHeight) {
-                        const isRight = (Math.round(currentY / segmentHeight)) % 2 === 0;
-                        const amplitude = 20;
-                        const controlX = isRight ? rightX + amplitude : rightX - amplitude;
-                        const nextY = Math.min(currentY + segmentHeight, dHeight);
-                        d += `Q ${controlX} ${(currentY + nextY)/2}, ${rightX} ${nextY} `;
-                        currentY = nextY;
-                    }
                 }
 
                 pathElement.setAttribute('d', d);
                 pathLength = pathElement.getTotalLength();
-                handleScroll(); // Trigger update position
+                handleScroll();
             };
 
             const handleScroll = () => {
                 if (!pathLength) return;
-                
-                // Objetivo de altura (40% de la ventana, para que la flecha persiga el centro de la vista)
                 const targetY = window.scrollY + window.innerHeight * 0.4;
-                
                 let low = 0, high = pathLength, mid;
-                // Búsqueda binaria para encontrar la longitud de ruta (L) donde la Y coincide con el scroll
                 for (let i = 0; i < 20; i++) {
                     mid = (low + high) / 2;
                     const pt = pathElement.getPointAtLength(mid);
                     if (pt.y < targetY) low = mid;
                     else high = mid;
                 }
-
                 const point = pathElement.getPointAtLength(low);
-                // Tomar un punto ligeramente más adelante para calcular la rotación tangencial
                 const nextPoint = pathElement.getPointAtLength(Math.min(low + 2, pathLength));
                 let angle = Math.atan2(nextPoint.y - point.y, nextPoint.x - point.x) * (180 / Math.PI);
 
-                // Aplicar transformaciones a la flecha
                 arrowGroup.style.transform = `translate(${point.x}px, ${point.y}px) rotate(${angle - 90}deg)`;
                 arrowGroup.style.opacity = '1';
             };
 
-            // Init Wavy path logic
             window.addEventListener('resize', updatePath);
             window.addEventListener('scroll', handleScroll, { passive: true });
-            
-            // Allow DOM to settle before calculating path (Imágenes, fuentes, etc.)
             setTimeout(updatePath, 500); 
-            window.onload = updatePath;
 
-            /* --- LOGIC: CONFIGURADOR FORM --- */
-            
-            // Función para cambiar estilos de botones toggle
+            /* --- CONFIGURADOR LOGIC --- */
             const toggleConfigBtn = (btn, activeClasses, inactiveClasses) => {
-                const isActive = btn.classList.contains('active');
-                if (isActive) {
+                if (btn.classList.contains('active')) {
                     btn.classList.remove('active', ...activeClasses);
                     btn.classList.add(...inactiveClasses);
                 } else {
@@ -819,99 +750,130 @@
                 }
             };
 
-            // Lógica botones de agencias
             document.querySelectorAll('#courier-options .config-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleConfigBtn(
-                        btn, 
-                        ['bg-[#604FDB]', 'text-white', 'border-[#1B162A]'], 
-                        ['bg-white', 'text-slate-500', 'border-slate-200']
-                    );
-                });
+                btn.addEventListener('click', (e) => toggleConfigBtn(btn, ['bg-[#604FDB]', 'text-white', 'border-[#1B162A]'], ['bg-white', 'text-slate-500', 'border-slate-200']));
             });
 
-            // Lógica botones de días
             document.querySelectorAll('#day-options .config-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleConfigBtn(
-                        btn, 
-                        ['bg-[#36E5BD]', 'text-[#1B162A]', 'border-[#1B162A]'], 
-                        ['bg-white', 'text-slate-500', 'border-slate-200']
-                    );
-                });
+                btn.addEventListener('click', (e) => toggleConfigBtn(btn, ['bg-[#36E5BD]', 'text-[#1B162A]', 'border-[#1B162A]'], ['bg-white', 'text-slate-500', 'border-slate-200']));
             });
 
-            // Lógica control de anticipación (+ y -)
             const anticipacionInput = document.getElementById('anticipacion-input');
-            if(anticipacionInput) {
-                document.getElementById('btn-minus').addEventListener('click', () => {
-                    let val = parseInt(anticipacionInput.value);
-                    if (val > 0) anticipacionInput.value = val - 1;
-                });
-                document.getElementById('btn-plus').addEventListener('click', () => {
-                    let val = parseInt(anticipacionInput.value);
-                    anticipacionInput.value = val + 1;
-                });
-            }
+            document.getElementById('btn-minus').addEventListener('click', () => {
+                if (parseInt(anticipacionInput.value) > 0) anticipacionInput.value = parseInt(anticipacionInput.value) - 1;
+            });
+            document.getElementById('btn-plus').addEventListener('click', () => {
+                anticipacionInput.value = parseInt(anticipacionInput.value) + 1;
+            });
 
-            // Lógica para Generar y mostrar Link
+            /* --- GENERAR LINK & MODAL --- */
             const btnGenerar = document.getElementById('btn-generar');
             const linkResult = document.getElementById('link-result');
+            const urlEl = document.getElementById('generated-url');
+            const modal = document.getElementById('customer-modal');
+            const modalContent = document.getElementById('customer-modal-content');
+            const selectCourier = document.getElementById('client-courier');
+            const selectDate = document.getElementById('client-date');
             
-            if(btnGenerar && linkResult) {
-                btnGenerar.addEventListener('click', () => {
-                    const wsNumber = document.getElementById('ws-number').value.trim() || 'tu-numero';
-                    // Simulación de creación de hash único para el link
-                    const randomId = Math.random().toString(36).substring(2, 8);
-                    const url = `latam5s.com/link/${wsNumber.replace(/\s+/g, '')}/${randomId}`;
-                    
-                    document.getElementById('generated-url').textContent = url;
-                    
-                    // Mostrar caja de resultado si está oculta
-                    linkResult.classList.remove('hidden');
-                    
-                    // Scrollear un poco para que el usuario vea el resultado
-                    setTimeout(() => {
-                        linkResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                });
-            }
+            btnGenerar.addEventListener('click', () => {
+                savedBusinessName = document.getElementById('business-name').value.trim() || 'Tu Negocio';
+                savedWsNumber = document.getElementById('ws-number').value.replace(/\D/g, ''); 
+                savedCouriers = Array.from(document.querySelectorAll('#courier-options .active')).map(btn => btn.textContent);
+                savedDays = Array.from(document.querySelectorAll('#day-options .active')).map(btn => btn.textContent);
+                savedAnticipation = parseInt(anticipacionInput.value) || 0;
+                
+                if (savedCouriers.length === 0) savedCouriers = ['Por acordar'];
 
-            // Lógica Copiar al portapapeles
-            const btnCopy = document.getElementById('btn-copy');
-            if(btnCopy) {
-                btnCopy.addEventListener('click', () => {
-                    const textToCopy = document.getElementById('generated-url').textContent;
+                const slug = savedBusinessName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                urlEl.innerHTML = `latam5s.com/link/${slug} <i class="ph-bold ph-arrow-up-right text-xl opacity-50 group-hover:opacity-100"></i>`;
+                
+                urlEl.onclick = (e) => {
+                    e.preventDefault();
+                    openModal();
+                };
+                
+                linkResult.classList.remove('hidden');
+                setTimeout(() => linkResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+            });
+
+            function openModal() {
+                document.getElementById('modal-business-name').textContent = savedBusinessName;
+                
+                selectCourier.innerHTML = '';
+                savedCouriers.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = opt.textContent = c;
+                    selectCourier.appendChild(opt);
+                });
+
+                selectDate.innerHTML = '';
+                if (savedDays.length === 0) {
+                    const opt = document.createElement('option');
+                    opt.value = opt.textContent = 'Por acordar';
+                    selectDate.appendChild(opt);
+                } else {
+                    const dayMap = { 'Dom':0, 'Lun':1, 'Mar':2, 'Mie':3, 'Jue':4, 'Vie':5, 'Sab':6 };
+                    const allowedDays = savedDays.map(d => dayMap[d]);
                     
-                    // Método fallback para iFrames (document.execCommand)
-                    const tempInput = document.createElement('input');
-                    tempInput.value = textToCopy;
-                    document.body.appendChild(tempInput);
-                    tempInput.select();
+                    let currDate = new Date();
+                    currDate.setDate(currDate.getDate() + savedAnticipation);
                     
-                    try {
-                        document.execCommand('copy');
-                        const originalHTML = btnCopy.innerHTML;
-                        // Cambiar botón para dar feedback de copiado
-                        btnCopy.classList.remove('bg-[#1B162A]');
-                        btnCopy.classList.add('bg-[#36E5BD]', 'text-[#1B162A]');
-                        btnCopy.innerHTML = '<i class="ph-bold ph-check text-xl"></i> Copiado';
-                        
-                        setTimeout(() => { 
-                            btnCopy.innerHTML = originalHTML;
-                            btnCopy.classList.remove('bg-[#36E5BD]', 'text-[#1B162A]');
-                            btnCopy.classList.add('bg-[#1B162A]');
-                        }, 2500);
-                    } catch (err) {
-                        console.error('No se pudo copiar el texto', err);
+                    let found = 0, attempts = 0;
+                    while(found < 3 && attempts < 15) {
+                        if (allowedDays.includes(currDate.getDay())) {
+                            const opt = document.createElement('option');
+                            const dayName = Object.keys(dayMap).find(key => dayMap[key] === currDate.getDay());
+                            const text = `${dayName} ${String(currDate.getDate()).padStart(2, '0')}/${String(currDate.getMonth() + 1).padStart(2, '0')}`;
+                            opt.value = opt.textContent = text;
+                            selectDate.appendChild(opt);
+                            found++;
+                        }
+                        currDate.setDate(currDate.getDate() + 1);
+                        attempts++;
                     }
-                    
-                    document.body.removeChild(tempInput);
-                });
+                }
+
+                modal.classList.remove('hidden');
+                void modal.offsetWidth;
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
             }
 
+            document.getElementById('close-modal').addEventListener('click', () => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            });
+
+            document.getElementById('submit-client-form').addEventListener('click', () => {
+                const msg = encodeURIComponent(`📦 *NUEVO ENVÍO (LATAM5S)*\n\nHola ${savedBusinessName}, acabo de llenar mis datos:\n\n👤 *Cliente:* ${document.getElementById('client-name').value || 'Sin Nombre'}\n🪪 *DNI/CE:* ${document.getElementById('client-dni').value || 'Sin DNI'}\n📱 *Tel:* ${document.getElementById('client-phone').value || 'Sin Celular'}\n\n🏢 *Agencia:* ${selectCourier.value}\n📅 *Fecha Despacho:* ${selectDate.value}\n📍 *Destino:* ${document.getElementById('client-dest').value || 'Sin Destino'}\n\n✨ _Información procesada por tu Link de Latam5s._`);
+                window.open(savedWsNumber ? `https://wa.me/51${savedWsNumber}?text=${msg}` : `https://wa.me/?text=${msg}`, '_blank');
+            });
+
+            document.getElementById('btn-copy').addEventListener('click', function() {
+                const text = document.getElementById('generated-url').textContent.trim();
+                const tempInput = document.createElement('input');
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand('copy');
+                    const original = this.innerHTML;
+                    this.classList.replace('bg-[#1B162A]', 'bg-[#36E5BD]');
+                    this.classList.replace('text-white', 'text-[#1B162A]');
+                    this.innerHTML = '<i class="ph-bold ph-check text-xl"></i> Copiado';
+                    setTimeout(() => { 
+                        this.innerHTML = original;
+                        this.classList.replace('bg-[#36E5BD]', 'bg-[#1B162A]');
+                        this.classList.replace('text-[#1B162A]', 'text-white');
+                    }, 2000);
+                } catch(e) {}
+                document.body.removeChild(tempInput);
+            });
         });
     </script>
 </body>
